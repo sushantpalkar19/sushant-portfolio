@@ -61,14 +61,18 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="relative mx-auto w-full max-w-md lg:mr-0">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-elevated">
+          <motion.div variants={fadeUp} className="relative mx-auto w-full max-w-sm lg:mr-0">
+            <div className="relative aspect-square overflow-hidden rounded-full border border-secondary/40 bg-card p-2 shadow-elevated">
               <img
-                src="/images/profile.svg"
-                alt="Professional profile illustration for Sushant Palkar"
-                className="aspect-[4/5] w-full object-cover"
+                src="/images/profile.jpg"
+                alt="Sushant Palkar"
+                className="h-full w-full rounded-full object-cover object-[center_22%]"
                 loading="eager"
                 decoding="async"
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = "/images/profile.svg";
+                }}
               />
             </div>
           </motion.div>
