@@ -1,0 +1,16 @@
+{
+  "name": "Sushant Palkar Portfolio",
+  "short_name": "Sushant",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "description": "Modern portfolio website for software developer Sushant Palkar.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
