@@ -9,7 +9,7 @@ A clean, recruiter-friendly personal portfolio built with React 19, Vite, TypeSc
 - Subtle Framer Motion page fade, section slide-up reveals, button hover motion, and card elevation
 - Reusable UI components for buttons, cards, badges, inputs, textareas, section headings, and project cards
 - EmailJS contact form powered by React Hook Form and Zod validation
-- SEO metadata, `robots.txt`, `sitemap.xml`, manifest, resume download, and Vercel config
+- SEO metadata, `robots.txt`, `sitemap.xml`, manifest, external resume preview link, and Vercel config
 - Lazy-loaded route and section modules with lazy-loaded project images
 
 ## Tech Stack
@@ -106,6 +106,6 @@ npm run preview
 
 - Edit profile, skills, experience, projects, education, and contact data in `src/data/portfolio.ts`.
 - Edit site name, title, navigation, SEO description, and project filters in `src/constants/site.ts`.
-- Replace `public/resume.pdf` with the final resume.
+- Update `resumeUrl` in `src/constants/site.ts` when the Google Drive resume link changes.
 - Replace `public/images/profile.svg` with a real profile photo when available.
 - Add real project deployment URLs to `liveUrl` in `src/data/portfolio.ts`.

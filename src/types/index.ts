@@ -45,14 +45,28 @@ export type ProjectCategory = "Full Stack" | "Enterprise";
 export type ProjectItem = {
   id: string;
   title: string;
+  subtitle?: string;
   category: ProjectCategory;
   description: string;
   image: string;
   stack: string[];
   highlights: string[];
+  archHighlights?: string[];
   githubUrl: string;
   liveUrl?: string;
   featured: boolean;
+  underDevelopment?: boolean;
+  iconColor?: string;
+};
+
+export type AdditionalProject = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  stack: string[];
+  iconColor?: string;
+  githubUrl?: string;
 };
 
 export type EducationItem = {

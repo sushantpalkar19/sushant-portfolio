@@ -1,5 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Seo } from "@/components/common/seo";
+import { SectionDivider } from "@/components/common/section-divider";
+import { TechMarquee } from "@/components/common/tech-marquee";
 import { PageShell } from "@/components/layout/page-shell";
 import { SectionSkeleton } from "@/components/common/section-skeleton";
 import { SITE_CONFIG } from "@/constants/site";
@@ -27,11 +29,18 @@ export default function HomePage() {
       <PageShell>
         <HeroSection />
         <Suspense fallback={<SectionSkeleton />}>
+          <SectionDivider />
           <AboutSection />
-          <SkillsSection />
+          <TechMarquee />
+          <SectionDivider />
           <ExperienceSection />
+          <SectionDivider />
           <ProjectsSection />
+          <SectionDivider />
+          <SkillsSection />
+          <SectionDivider />
           <EducationSection />
+          <SectionDivider />
           <ContactSection />
         </Suspense>
       </PageShell>

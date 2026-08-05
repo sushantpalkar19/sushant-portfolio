@@ -40,6 +40,11 @@ export const socialLinks: SocialLink[] = [
     href: "mailto:sushantpalkar92@gmail.com",
     icon: Mail,
   },
+  {
+    label: "Phone",
+    href: "tel:+917499092205",
+    icon: Phone,
+  },
 ];
 
 export const aboutStats: StatItem[] = [
@@ -166,6 +171,7 @@ export const projects: ProjectItem[] = [
   {
     id: "icu-monitoring-platform",
     title: "ICU Monitoring Platform",
+    subtitle: "Healthcare Management System",
     category: "Full Stack",
     description:
       "Developed a healthcare management platform with dashboards, REST APIs, and secure role-based authentication for monitoring ICU operations.",
@@ -176,12 +182,19 @@ export const projects: ProjectItem[] = [
       "Secure role-based authentication and access control",
       "REST API-driven data handling for healthcare operations",
     ],
+    archHighlights: [
+      "React component-driven frontend UI",
+      "Node.js & Express REST API layer",
+      "MongoDB for flexible data storage",
+    ],
     githubUrl: "https://github.com/sushantpalkar19",
     featured: true,
+    iconColor: "from-emerald-500 to-teal-400",
   },
   {
     id: "exam-management-ai-proctoring-system",
-    title: "Exam Management & AI Proctoring System",
+    title: "Exam Management & AI Proctoring",
+    subtitle: "Online Assessment Platform",
     category: "Full Stack",
     description:
       "Developed an online examination platform featuring AI-based proctoring, secure authentication, and role-based access.",
@@ -192,12 +205,19 @@ export const projects: ProjectItem[] = [
       "Secure authentication with role-based permissions",
       "Full-stack architecture built for exam administration",
     ],
+    archHighlights: [
+      "React.js SPA frontend with protected routes",
+      "Express.js API with JWT-based auth",
+      "MongoDB Atlas for scalable data storage",
+    ],
     githubUrl: "https://github.com/sushantpalkar19",
     featured: false,
+    iconColor: "from-violet-500 to-purple-400",
   },
   {
     id: "school-website-e-learning-system",
-    title: "School Website - E-Learning System",
+    title: "School E-Learning System",
+    subtitle: "Academic Management Platform",
     category: "Enterprise",
     description:
       "Developed an academic management platform enabling communication between students and teachers, attendance management, announcements, and progress tracking.",
@@ -208,10 +228,68 @@ export const projects: ProjectItem[] = [
       "Attendance, announcements, and academic progress tracking",
       "Structured full-stack architecture for school operations",
     ],
+    archHighlights: [
+      "Angular modular frontend with lazy-loaded routes",
+      "Spring Boot REST API with service layers",
+      "MariaDB for relational academic data storage",
+    ],
     githubUrl: "https://github.com/sushantpalkar19",
     featured: false,
+    iconColor: "from-sky-500 to-blue-400",
   },
 ];
+
+export const additionalProjects: ProjectItem[] = [
+  {
+    id: "ghar-ka-khana",
+    title: "GharKaKhana",
+    subtitle: "Food Ordering & Mess Management App",
+    category: "Full Stack",
+    description:
+      "A full-stack food ordering platform connecting customers with mess owners. Features JWT authentication, dual role dashboards (Customer & Mess Owner), food ordering workflows, reviews, and a fully responsive UI.",
+    image: "/images/project-icu-monitoring.svg",
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth"],
+    highlights: [
+      "Dual role dashboards for Customers & Mess Owners",
+      "Secure JWT authentication & role-based access control",
+      "Food ordering workflows, menu management, and review system",
+      "Fully responsive modern UI",
+    ],
+    archHighlights: [
+      "React.js component-driven frontend architecture",
+      "Node.js & Express.js backend REST API layer",
+      "MongoDB database for user, menu, & order management",
+    ],
+    githubUrl: "https://github.com/sushantpalkar19",
+    featured: false,
+    iconColor: "from-orange-500 to-rose-400",
+  },
+  {
+    id: "internship-recommendation-system",
+    title: "Internship Recommendation System",
+    subtitle: "ML-Powered Career Recommendation Engine",
+    category: "Enterprise",
+    description:
+      "A machine learning-based recommendation engine built with Python & Streamlit that matches students with relevant internship opportunities using TF-IDF, Word2Vec, and CountVectorizer algorithms.",
+    image: "/images/project-ai-proctoring.svg",
+    stack: ["Python", "Streamlit", "Machine Learning", "TF-IDF", "Word2Vec"],
+    highlights: [
+      "Machine learning engine matching students to relevant internships",
+      "Interactive Web UI dashboard built with Streamlit",
+      "NLP text vectorization using TF-IDF, Word2Vec, & CountVectorizer",
+      "Intelligent content-based filtering algorithms",
+    ],
+    archHighlights: [
+      "Python & Streamlit interactive web dashboard layer",
+      "Scikit-learn & Gensim NLP recommendation pipeline",
+      "TF-IDF & Word2Vec feature extraction vectors",
+    ],
+    githubUrl: "https://github.com/sushantpalkar19",
+    featured: false,
+    iconColor: "from-violet-500 to-indigo-400",
+  },
+];
+
 
 export const education: EducationItem[] = [
   {
@@ -228,7 +306,7 @@ export const education: EducationItem[] = [
   {
     institution: "Biyani Junior College",
     degree: "Higher Secondary",
-    period: "Higher Secondary",
+    period: "2022",
     scoreLabel: "Percentage",
     scoreValue: "77.17%",
     summary:
@@ -237,7 +315,7 @@ export const education: EducationItem[] = [
   {
     institution: "Tapti Public School",
     degree: "Secondary Education",
-    period: "Secondary Education",
+    period: "2020",
     scoreLabel: "Percentage",
     scoreValue: "68.6%",
     summary:

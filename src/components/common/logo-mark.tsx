@@ -6,13 +6,13 @@ type LogoMarkProps = {
 
 export function LogoMark({ className }: LogoMarkProps) {
   return (
-    <div
+    <span
       className={cn(
-        "flex h-11 w-11 items-center justify-center rounded-lg border border-primary/35 bg-primary text-white shadow-glow",
+        "inline-flex items-center font-display text-2xl font-bold leading-none text-gradient",
         className,
       )}
     >
-      <span className="font-display text-lg font-bold">SP</span>
-    </div>
+      SP.
+    </span>
   );
 }

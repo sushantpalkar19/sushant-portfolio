@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,27 +6,27 @@
 
 @layer base {
   :root {
-    --color-background: 15 23 42;
-    --color-card: 30 41 59;
-    --color-foreground: 248 250 252;
-    --color-muted: 148 163 184;
-    --color-border: 51 65 85;
-    --color-primary: 37 99 235;
+    --color-background: 248 250 252;
+    --color-card: 255 255 255;
+    --color-foreground: 15 23 42;
+    --color-muted: 100 116 139;
+    --color-border: 226 232 240;
+    --color-primary: 16 185 129;
     --color-secondary: 56 189 248;
-    --color-accent: 56 189 248;
-    --color-success: 21 128 61;
+    --color-accent: 14 165 233;
+    --color-success: 5 150 105;
   }
 
   .dark {
-    --color-background: 15 23 42;
-    --color-card: 30 41 59;
-    --color-foreground: 248 250 252;
-    --color-muted: 148 163 184;
-    --color-border: 51 65 85;
-    --color-primary: 37 99 235;
+    --color-background: 6 12 27;
+    --color-card: 17 24 39;
+    --color-foreground: 249 250 251;
+    --color-muted: 156 163 175;
+    --color-border: 31 41 55;
+    --color-primary: 16 185 129;
     --color-secondary: 56 189 248;
-    --color-accent: 56 189 248;
-    --color-success: 21 128 61;
+    --color-accent: 45 212 191;
+    --color-success: 16 185 129;
   }
 
   * {
@@ -35,15 +35,20 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-foreground;
     min-height: 100vh;
-    background:
-      linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 1)),
-      #0f172a;
+    background: linear-gradient(180deg, rgb(248 250 252), rgb(241 245 249));
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .dark body {
+    background: linear-gradient(180deg, rgb(6 12 27), rgb(5 10 23) 58%, rgb(6 12 27));
   }
 
   body::before {
@@ -52,11 +57,17 @@
     inset: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    opacity: 0.4;
+      linear-gradient(115deg, rgba(16, 185, 129, 0.08), transparent 34%),
+      linear-gradient(245deg, rgba(56, 189, 248, 0.1), transparent 36%);
+    opacity: 0.8;
     z-index: -1;
+  }
+
+  .dark body::before {
+    background-image:
+      linear-gradient(115deg, rgba(16, 185, 129, 0.045), transparent 36%),
+      linear-gradient(245deg, rgba(56, 189, 248, 0.055), transparent 42%);
+    opacity: 0.7;
   }
 
   a,
@@ -93,5 +104,27 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .animate-shimmer-sweep {
+    animation: shimmer-sweep 2.8s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) rotate(8deg);
+  }
+
+  100% {
+    transform: translateX(150%) rotate(8deg);
   }
 }

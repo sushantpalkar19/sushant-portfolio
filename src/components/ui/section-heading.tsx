@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "@/animations/variants";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
 
 type SectionHeadingProps = {
@@ -27,11 +26,21 @@ export function SectionHeading({
       viewport={{ once: true, amount: 0.35 }}
       variants={fadeUp}
     >
-      <Badge className="mb-4 border-primary/30 bg-primary/10 text-foreground">{eyebrow}</Badge>
-      <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
+      <div
+        className={cn(
+          "mb-4 flex items-center gap-3",
+          align === "center" ? "justify-center" : "justify-start",
+        )}
+      >
+        <span className="h-px w-8 bg-gradient-primary" aria-hidden="true" />
+        <span className="font-mono text-xs font-semibold uppercase tracking-widest text-primary">
+          {eyebrow}
+        </span>
+      </div>
+      <h2 className="font-display text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-8 text-muted sm:text-lg">{description}</p>
+      <p className="mt-4 text-base leading-7 text-muted">{description}</p>
     </motion.div>
   );
 }

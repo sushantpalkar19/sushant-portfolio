@@ -1,51 +1,56 @@
 import { ArrowUp } from "lucide-react";
-import { NAV_ITEMS } from "@/constants/site";
-import { socialLinks } from "@/data/portfolio";
-import { LogoMark } from "@/components/common/logo-mark";
-import { SocialLinks } from "@/components/common/social-links";
+import { motion } from "framer-motion";
 
 export function Footer() {
-  return (
-    <footer className="border-t border-border py-10">
-      <div className="container">
-        <div className="flex flex-col gap-8 rounded-xl border border-border bg-card p-6 md:flex-row md:items-center md:justify-between md:p-8">
-          <div className="max-w-lg">
-            <div className="flex items-center gap-3">
-              <LogoMark />
-              <div>
-                <p className="font-display text-lg font-bold text-foreground">Sushant Palkar</p>
-                <p className="text-sm text-muted">
-                  Clean, responsive web applications built with practical full-stack engineering.
-                </p>
-              </div>
-            </div>
-          </div>
+  const currentYear = new Date().getFullYear();
 
-          <div className="flex flex-wrap gap-3 text-sm text-muted">
-            {NAV_ITEMS.map((item) => (
-              <a key={item.href} href={item.href} className="transition hover:text-foreground">
-                {item.label}
-              </a>
-            ))}
-          </div>
+  return (
+    <footer className="border-t border-slate-800/80 bg-[#070c18] py-6 text-slate-400">
+      <div className="container mx-auto flex flex-col gap-4 px-4 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
+        {/* Left: Copyright and build info */}
+        <div className="flex items-center gap-1.5 text-slate-400">
+          <span>&copy; {currentYear} Sushant Palkar</span>
+          <span>&bull;</span>
+          <span>Built with React &amp; Emerald Glow</span>
         </div>
 
-        <div className="mt-6 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} Sushant Palkar. Built with React, TypeScript, Tailwind CSS,
-            Framer Motion, and EmailJS.
-          </p>
+        {/* Center: Clean social text links */}
+        <div className="flex items-center gap-6">
+          <a
+            href="https://github.com/sushantpalkar19"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-200 hover:text-white"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/sushant-palkar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-200 hover:text-white"
+          >
+            LinkedIn
+          </a>
+        </div>
 
-          <div className="flex items-center gap-4">
-            <SocialLinks links={socialLinks} />
-            <a
-              href="#home"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-card text-foreground transition duration-300 hover:-translate-y-1 hover:border-primary/50"
-              aria-label="Back to top"
-            >
-              <ArrowUp className="h-4 w-4" />
-            </a>
+        {/* Right: Availability status & Scroll-to-top circular button */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#14F195] shadow-[0_0_8px_#14F195]" aria-hidden="true" />
+            <span className="text-slate-300">Available for collaboration</span>
           </div>
+
+          <motion.a
+            href="#home"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#14F195]/40 bg-[#090f1e] text-[#14F195] shadow-[0_0_12px_rgba(20,241,149,0.15)] transition-all duration-200 hover:border-[#14F195] hover:shadow-[0_0_20px_rgba(20,241,149,0.35)] hover:text-white"
+            aria-label="Scroll to top"
+            whileHover={{ scale: 1.08, y: -2 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
+          >
+            <ArrowUp className="h-4 w-4" />
+          </motion.a>
         </div>
       </div>
     </footer>
