@@ -8,6 +8,7 @@ import { socialLinks } from "@/data/portfolio";
 import { SocialLinks } from "@/components/common/social-links";
 import { buttonVariants } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/constants/site";
+import { AnimatedRoles } from "@/components/common/animated-roles";
 
 type CodeLine = {
   indent?: number;
@@ -41,7 +42,7 @@ const developerCode: CodeLine[] = [
       <>
         <span className="text-slate-300">role</span>
         <span className="text-slate-400">:</span>{" "}
-        <span className="text-amber-300">&apos;React &amp; Node.js Developer&apos;</span>
+        <span className="text-amber-300">&apos;Full Stack Developer&apos;</span>
         <span className="text-slate-500">,</span>
       </>
     ),
@@ -304,7 +305,7 @@ export default function HeroSection() {
               className="mt-7 max-w-full break-words text-xl font-semibold text-muted sm:text-2xl"
               variants={fadeUp}
             >
-              {SITE_CONFIG.subtitle}
+              <AnimatedRoles />
             </motion.p>
 
             <motion.p
