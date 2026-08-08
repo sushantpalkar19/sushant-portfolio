@@ -77,6 +77,7 @@ export const skillCategories: SkillCategory[] = [
     description: "Responsive interfaces focused on clarity, usability, and modern interaction patterns.",
     skills: [
       { name: "React.js", level: 90, note: "Component-driven UI and modern frontend architecture" },
+      { name: "Flutter", level: 88, note: "Cross-platform mobile & UI application development" },
       { name: "Angular", level: 86, note: "Structured application development and feature modules" },
       { name: "HTML5", level: 93, note: "Semantic structure and accessible page foundations" },
       { name: "CSS3", level: 88, note: "Responsive layouts, styling systems, and visual polish" },
@@ -109,6 +110,7 @@ export const skillCategories: SkillCategory[] = [
     description: "Core languages I use to build interfaces, APIs, and data-backed applications.",
     skills: [
       { name: "JavaScript", level: 91, note: "Frontend logic, APIs, and web application behavior" },
+      { name: "Dart", level: 88, note: "Mobile development and Flutter application logic" },
       { name: "Python", level: 76, note: "Automation, data tasks, and problem-solving workflows" },
       { name: "SQL", level: 82, note: "Relational queries, schema understanding, and structured data access" },
     ],
@@ -243,24 +245,38 @@ export const additionalProjects: ProjectItem[] = [
   {
     id: "ghar-ka-khana",
     title: "GharKaKhana",
-    subtitle: "Food Ordering & Mess Management App",
+    subtitle: "Food Ordering & Mess Management Platform",
     category: "Full Stack",
     description:
-      "A full-stack food ordering platform connecting customers with mess owners. Features JWT authentication, dual role dashboards (Customer & Mess Owner), food ordering workflows, reviews, and a fully responsive UI.",
-    image: "/images/project-icu-monitoring.svg",
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth"],
+      "A full-stack food ordering and mess management platform available as both a React.js web application and Flutter mobile app, connecting customers with mess owners through authentication, mess discovery, menu management, ordering, subscriptions, reviews, and role-based workflows.",
+    image: "",
+    stack: [
+      "React.js",
+      "Flutter",
+      "Dart",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT"
+    ],
     highlights: [
-      "Dual role dashboards for Customers & Mess Owners",
-      "Secure JWT authentication & role-based access control",
-      "Food ordering workflows, menu management, and review system",
-      "Fully responsive modern UI",
+      "Full-featured React.js web application",
+      "Flutter/Dart Android mobile application",
+      "Customer and Mess Owner role-based workflows",
+      "JWT authentication and role-based access control",
+      "Mess discovery, menu and food management",
+      "Food ordering and subscription workflows",
+      "Reviews, bookmarks and user profile management",
+      "REST API powered backend"
     ],
     archHighlights: [
-      "React.js component-driven frontend architecture",
-      "Node.js & Express.js backend REST API layer",
-      "MongoDB database for user, menu, & order management",
+      "React.js web frontend",
+      "Flutter/Dart mobile application",
+      "Node.js & Express.js REST API backend",
+      "MongoDB database",
+      "JWT-based authentication and authorization"
     ],
-    githubUrl: "https://github.com/sushantpalkar19",
+    githubUrl: "https://github.com/sushantpalkar19/GharKaKhana-Mobile",
     featured: false,
     iconColor: "from-orange-500 to-rose-400",
   },

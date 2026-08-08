@@ -40,7 +40,7 @@ export type ExperienceItem = {
   achievements: string[];
 };
 
-export type ProjectCategory = "Full Stack" | "Enterprise";
+export type ProjectCategory = "Full Stack" | "Enterprise" | "Mobile App";
 
 export type ProjectItem = {
   id: string;
@@ -48,7 +48,7 @@ export type ProjectItem = {
   subtitle?: string;
   category: ProjectCategory;
   description: string;
-  image: string;
+  image?: string;
   stack: string[];
   highlights: string[];
   archHighlights?: string[];

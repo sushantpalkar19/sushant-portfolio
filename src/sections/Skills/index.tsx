@@ -7,6 +7,7 @@ import {
   Globe,
   Layers,
   Layout,
+  Smartphone,
   Sparkles,
   Terminal,
   Users,
@@ -29,6 +30,7 @@ const skillGroups: SkillGroup[] = [
     category: "LANGUAGES",
     skills: [
       { name: "JavaScript", icon: Code2 },
+      { name: "Dart", icon: Code2 },
       { name: "Python", icon: Terminal },
       { name: "SQL", icon: Database },
       { name: "HTML5", icon: Globe },
@@ -39,6 +41,7 @@ const skillGroups: SkillGroup[] = [
     category: "FRAMEWORKS & LIBRARIES",
     skills: [
       { name: "React.js", icon: Layers },
+      { name: "Flutter", icon: Smartphone },
       { name: "Node.js", icon: Cpu },
       { name: "Express.js", icon: Terminal },
       { name: "Angular", icon: Layers },
