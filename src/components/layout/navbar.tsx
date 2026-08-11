@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Download, Menu } from "lucide-react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { NAV_ITEMS, SECTION_IDS, SITE_CONFIG } from "@/constants/site";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { LogoMark } from "@/components/common/logo-mark";
@@ -14,6 +14,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
   const activeSection = useActiveSection(SECTION_IDS);
+  const shouldReduceMotion = useReducedMotion();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 8);
@@ -28,9 +29,13 @@ export function Navbar() {
             ? "border-border/80 bg-background/85 shadow-card"
             : "border-transparent bg-background/35",
         )}
-        initial={{ y: -22, opacity: 0 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: 0.5,
+          delay: shouldReduceMotion ? 0 : 0.9,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
         <div className="container">
           <div className="flex min-h-20 items-center justify-between gap-4">

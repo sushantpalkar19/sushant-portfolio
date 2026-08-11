@@ -154,13 +154,7 @@ export default function ContactSection() {
           </div>
 
           {/* Centered Glassmorphism Container Card */}
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+          <div
             className="relative rounded-[24px] border border-slate-800/80 bg-[#090f1e]/90 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-10 lg:p-12"
           >
             {/* Two-Column Layout with Vertical Divider on Desktop */}
@@ -322,7 +316,7 @@ export default function ContactSection() {
                 </form>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

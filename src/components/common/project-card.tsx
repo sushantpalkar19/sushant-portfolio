@@ -58,10 +58,10 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
+      whileHover={{ y: -6, scale: 1.015 }}
+      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
       onClick={() => onViewDetails(project)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-800/80 bg-[#091121]/95 p-6 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 hover:border-[#14F195]/40 hover:shadow-[0_20px_50px_rgba(20,241,149,0.12)] cursor-pointer"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-800/80 bg-[#091121]/95 p-6 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 hover:border-[#14F195]/40 hover:shadow-[0_22px_55px_rgba(20,241,149,0.14)] cursor-pointer"
     >
       {/* Dark radial glow arc top-right */}
       <div
@@ -119,9 +119,16 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 
       {/* "View Details →" link */}
       <div className="relative z-10 mt-5 flex items-center pt-1">
-        <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#14F195] transition-all duration-200 group-hover:translate-x-1 group-hover:text-white">
+        <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#14F195] transition-colors duration-200 group-hover:text-white">
           View Details
-          <ArrowRight className="h-3.5 w-3.5" />
+          <motion.span
+            className="inline-flex items-center"
+            initial={false}
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+          </motion.span>
         </span>
       </div>
     </motion.div>

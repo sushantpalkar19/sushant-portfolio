@@ -85,6 +85,13 @@
     min-height: 100vh;
   }
 
+  /* Hide native cursor on mouse devices — custom cursor takes over */
+  @media (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

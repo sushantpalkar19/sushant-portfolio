@@ -40,9 +40,11 @@ export default function AboutSection() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {aboutStats.map((stat) => (
-                  <div
+                  <motion.div
                     key={stat.label}
-                    className="rounded-lg border border-border bg-background/65 p-4"
+                    className="rounded-lg border border-border bg-background/65 p-4 transition-colors duration-200 hover:border-primary/40"
+                    whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(16,185,129,0.10)" }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
                   >
                     <p className="font-display text-2xl font-bold text-foreground">
                       {stat.value}
@@ -50,7 +52,7 @@ export default function AboutSection() {
                     <p className="mt-1 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
                       {stat.label}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </Card>

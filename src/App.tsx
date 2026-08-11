@@ -13,10 +13,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="*"
           element={
@@ -53,18 +50,16 @@ export default function App() {
     if (introCompletedRef.current) {
       return;
     }
-
     introCompletedRef.current = true;
     setShowIntro(false);
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
+    <>
       {showIntro ? (
         <WelcomeIntro key="welcome-intro" onComplete={handleIntroComplete} />
-      ) : (
-        <AppContent key="portfolio" />
-      )}
-    </AnimatePresence>
+      ) : null}
+      <AppContent />
+    </>
   );
 }

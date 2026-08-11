@@ -3,7 +3,7 @@ import {
   ArrowDownToLine,
   ArrowRight,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { socialLinks } from "@/data/portfolio";
 import { SocialLinks } from "@/components/common/social-links";
 import { buttonVariants } from "@/components/ui/button";
@@ -103,6 +103,8 @@ const developerCode: CodeLine[] = [
   },
 ];
 
+const EASE_PREMIUM = [0.22, 1, 0.36, 1] as const;
+
 const heroContainer: Variants = {
   hidden: {
     opacity: 0,
@@ -112,23 +114,22 @@ const heroContainer: Variants = {
     transition: {
       duration: 0.28,
       ease: "easeOut",
-      delayChildren: 0.04,
-      staggerChildren: 0.09,
     },
   },
 };
 
-const fadeUp: Variants = {
+const eyebrowReveal: Variants = {
   hidden: {
     opacity: 0,
-    y: 18,
+    y: 12,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.62,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.5,
+      delay: 0.95,
+      ease: EASE_PREMIUM,
     },
   },
 };
@@ -137,8 +138,8 @@ const headingContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.12,
-      staggerChildren: 0.12,
+      delayChildren: 1.1,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -146,16 +147,48 @@ const headingContainer: Variants = {
 const headingWord: Variants = {
   hidden: {
     opacity: 0,
-    y: 26,
-    filter: "blur(6px)",
+    y: 15,
+    filter: "blur(4px)",
   },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.72,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.55,
+      ease: EASE_PREMIUM,
+    },
+  },
+};
+
+const roleReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1.3,
+      ease: EASE_PREMIUM,
+    },
+  },
+};
+
+const descriptionReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1.45,
+      ease: EASE_PREMIUM,
     },
   },
 };
@@ -163,21 +196,17 @@ const headingWord: Variants = {
 const developerCardReveal: Variants = {
   hidden: {
     opacity: 0,
-    x: 90,
-    rotate: -10,
-    scale: 0.96,
+    x: 18,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     x: 0,
-    rotate: 0,
     scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 95,
-      damping: 17,
-      mass: 0.8,
-      delay: 0.18,
+      duration: 0.65,
+      delay: 1.4,
+      ease: EASE_PREMIUM,
     },
   },
 };
@@ -186,7 +215,7 @@ const buttonGroup: Variants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.04,
+      delayChildren: 1.6,
       staggerChildren: 0.08,
     },
   },
@@ -201,8 +230,8 @@ const buttonReveal: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.36,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.38,
+      ease: EASE_PREMIUM,
     },
   },
 };
@@ -235,8 +264,8 @@ const codeContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.075,
+      delayChildren: 1.65,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -244,20 +273,21 @@ const codeContainer: Variants = {
 const codeLineReveal: Variants = {
   hidden: {
     opacity: 0,
-    y: 7,
+    y: 6,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.28,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.25,
+      ease: EASE_PREMIUM,
     },
   },
 };
 
 export default function HeroSection() {
   const nameWords = SITE_CONFIG.name.split(" ");
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -267,27 +297,27 @@ export default function HeroSection() {
       <div className="container relative z-10">
         <motion.div
           className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-6xl items-center gap-10 py-8 md:py-10 lg:h-[calc(100svh-5rem)] lg:grid-cols-[minmax(0,1fr)_minmax(430px,460px)] lg:gap-16 lg:py-0"
-          initial="hidden"
+          initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
           variants={heroContainer}
         >
           <div className="min-w-0 max-w-2xl">
             <motion.span
               className="font-mono text-sm font-semibold uppercase tracking-[0.18em] text-primary"
-              variants={fadeUp}
+              variants={shouldReduceMotion ? undefined : eyebrowReveal}
             >
               Hi, I&apos;m
             </motion.span>
 
             <motion.h1
               className="mt-5 flex flex-wrap gap-x-5 font-display text-5xl font-bold leading-none text-foreground sm:text-6xl lg:text-7xl"
-              variants={headingContainer}
+              variants={shouldReduceMotion ? undefined : headingContainer}
             >
               {nameWords.map((word, index) => (
                 <motion.span
                   key={word}
                   className={index === nameWords.length - 1 ? "text-gradient" : undefined}
-                  variants={headingWord}
+                  variants={shouldReduceMotion ? undefined : headingWord}
                 >
                   {word}
                 </motion.span>
@@ -296,21 +326,21 @@ export default function HeroSection() {
 
             <motion.div
               className="mt-6 h-1 w-24 origin-left rounded-full bg-gradient-primary"
-              initial={{ scaleX: 0 }}
+              initial={shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.56, delay: 0.12, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 1.25, ease: EASE_PREMIUM }}
             />
 
             <motion.p
               className="mt-7 max-w-full break-words text-xl font-semibold text-muted sm:text-2xl"
-              variants={fadeUp}
+              variants={shouldReduceMotion ? undefined : roleReveal}
             >
               <AnimatedRoles />
             </motion.p>
 
             <motion.p
               className="mt-5 max-w-xl text-base leading-8 text-muted sm:text-lg"
-              variants={fadeUp}
+              variants={shouldReduceMotion ? undefined : descriptionReveal}
             >
               Building end-to-end web applications with React, Node.js, Express, MongoDB, and
               cloud-aware development practices.
@@ -318,13 +348,13 @@ export default function HeroSection() {
 
             <motion.div
               className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:gap-4"
-              variants={buttonGroup}
+              variants={shouldReduceMotion ? undefined : buttonGroup}
             >
               <motion.a
                 href="#projects"
                 className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}
-                variants={buttonReveal}
-                whileHover={{ scale: 1.03 }}
+                variants={shouldReduceMotion ? undefined : buttonReveal}
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.16, ease: "easeOut" }}
               >
@@ -338,8 +368,8 @@ export default function HeroSection() {
                   size: "lg",
                   className: "w-full sm:w-auto",
                 })}
-                variants={buttonReveal}
-                whileHover={{ scale: 1.03 }}
+                variants={shouldReduceMotion ? undefined : buttonReveal}
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.16, ease: "easeOut" }}
               >
@@ -354,8 +384,8 @@ export default function HeroSection() {
                 })}
                 target="_blank"
                 rel="noopener noreferrer"
-                variants={buttonReveal}
-                whileHover={{ scale: 1.03 }}
+                variants={shouldReduceMotion ? undefined : buttonReveal}
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.16, ease: "easeOut" }}
               >
@@ -366,15 +396,15 @@ export default function HeroSection() {
 
             <SocialLinks
               links={socialLinks}
-              staggered
-              staggerDelay={0.64}
+              staggered={!shouldReduceMotion}
+              staggerDelay={shouldReduceMotion ? 0 : 1.75}
               className="mt-10 gap-4"
               linkClassName="h-9 w-9 border-transparent bg-transparent text-primary hover:text-secondary"
             />
           </div>
 
           <motion.div
-            variants={developerCardReveal}
+            variants={shouldReduceMotion ? undefined : developerCardReveal}
             className="relative mx-auto flex w-full min-w-0 justify-center lg:mx-0 lg:justify-self-end"
           >
             <motion.div
@@ -387,7 +417,7 @@ export default function HeroSection() {
                 scale: [1, 1.05, 0.98, 1],
               }}
               transition={{
-                opacity: { duration: 0.7, delay: 0.26, ease: "easeOut" },
+                opacity: { duration: 0.7, delay: shouldReduceMotion ? 0 : 1.4, ease: "easeOut" },
                 x: { duration: 14, repeat: Infinity, ease: "easeInOut" },
                 y: { duration: 14, repeat: Infinity, ease: "easeInOut" },
                 scale: { duration: 14, repeat: Infinity, ease: "easeInOut" },
@@ -422,8 +452,8 @@ export default function HeroSection() {
 
                   <motion.pre
                     className="flex-1 overflow-hidden px-5 py-5 font-mono text-[0.73rem] font-semibold leading-[1.55rem] text-slate-300 sm:px-7 sm:text-[0.82rem] sm:leading-[1.7rem]"
-                    variants={codeContainer}
-                    initial="hidden"
+                    variants={shouldReduceMotion ? undefined : codeContainer}
+                    initial={shouldReduceMotion ? false : "hidden"}
                     animate="visible"
                   >
                     <code>
@@ -432,7 +462,7 @@ export default function HeroSection() {
                           key={`${index}-${line.indent ?? 0}`}
                           className="block min-w-0 whitespace-pre-wrap"
                           style={{ paddingLeft: `${(line.indent ?? 0) * 1.25}rem` }}
-                          variants={codeLineReveal}
+                          variants={shouldReduceMotion ? undefined : codeLineReveal}
                         >
                           {line.content}
                           {index === developerCode.length - 1 ? (

@@ -14,6 +14,8 @@ export function useLenis() {
       touchMultiplier: 1.1,
     });
 
+    (window as any).__lenis = lenis;
+
     let frameId = 0;
 
     const frame = (time: number) => {
@@ -26,6 +28,7 @@ export function useLenis() {
     return () => {
       window.cancelAnimationFrame(frameId);
       lenis.destroy();
+      delete (window as any).__lenis;
     };
   }, []);
 }

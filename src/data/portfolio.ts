@@ -178,16 +178,16 @@ export const projects: ProjectItem[] = [
     description:
       "Developed a healthcare management platform with dashboards, REST APIs, and secure role-based authentication for monitoring ICU operations.",
     image: "/images/project-icu-monitoring.svg",
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    stack: ["Angular", "Spring Boot", "MariaDB"],
     highlights: [
       "Dashboard-oriented ICU monitoring workflows",
       "Secure role-based authentication and access control",
       "REST API-driven data handling for healthcare operations",
     ],
     archHighlights: [
-      "React component-driven frontend UI",
-      "Node.js & Express REST API layer",
-      "MongoDB for flexible data storage",
+      "Angular modular frontend UI",
+      "Spring Boot REST API layer",
+      "MariaDB for relational healthcare data storage",
     ],
     githubUrl: "https://github.com/sushantpalkar19",
     featured: true,
