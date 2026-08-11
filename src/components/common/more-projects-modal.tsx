@@ -59,29 +59,29 @@ export function MoreProjectsModal({ open, onClose, onSelectProject }: MoreProjec
 
           {/* Click-outside layer + centering */}
           <div
-            className="fixed inset-0 z-[90] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-6"
             onClick={onClose}
           >
             {/* Modal panel – scrolls its own content */}
             <motion.div
               key="more-modal"
-              initial={{ opacity: 0, scale: 0.95, y: 24 }}
+              initial={{ opacity: 0, scale: 0.97, y: 32 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 24 }}
+              exit={{ opacity: 0, scale: 0.97, y: 32 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               role="dialog"
               aria-modal="true"
               aria-label="More Projects"
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-[24px] border border-slate-800/80 bg-[#0c1120] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
+              className="relative w-full max-w-2xl max-h-[92svh] overflow-y-auto overscroll-contain rounded-t-[24px] border border-slate-800/80 bg-[#0c1120] shadow-[0_30px_100px_rgba(0,0,0,0.7)] sm:max-h-[90vh] sm:rounded-[24px]"
             >
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-8">
                 {/* Header */}
                 <div className="flex items-center justify-between pr-2">
-                  <h2 className="font-display text-2xl font-bold text-white">More Projects</h2>
+                  <h2 className="font-display text-xl font-bold text-white sm:text-2xl">More Projects</h2>
                   <button
                     onClick={onClose}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/80 text-slate-400 transition-colors hover:border-slate-600 hover:text-white"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/80 text-slate-400 transition-colors hover:border-slate-600 hover:text-white"
                     aria-label="Close modal"
                   >
                     <X className="h-4 w-4" />

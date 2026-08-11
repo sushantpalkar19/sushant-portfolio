@@ -68,41 +68,41 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Click-outside layer + centering */}
           <div
-            className="fixed inset-0 z-[90] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-6"
             onClick={onClose}
           >
             {/* Modal panel – scrolls its own content */}
             <motion.div
               key="project-modal"
-              initial={{ opacity: 0, scale: 0.95, y: 24 }}
+              initial={{ opacity: 0, scale: 0.97, y: 32 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 24 }}
+              exit={{ opacity: 0, scale: 0.97, y: 32 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               role="dialog"
               aria-modal="true"
               aria-label={`${project.title} details`}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-[24px] border border-slate-800/80 bg-[#0c1120] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
+              className="relative w-full max-w-2xl max-h-[92svh] overflow-y-auto overscroll-contain rounded-t-[24px] border border-slate-800/80 bg-[#0c1120] shadow-[0_30px_100px_rgba(0,0,0,0.7)] sm:max-h-[90vh] sm:rounded-[24px]"
             >
-              <div className="p-6 sm:p-8">
-                {/* Close button */}
+              <div className="p-5 sm:p-8">
+                {/* Close button – 44px touch target */}
                 <button
                   onClick={onClose}
-                  className="absolute right-5 top-5 z-10 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/80 text-slate-400 transition-colors hover:border-slate-600 hover:text-white"
+                  className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/80 text-slate-400 transition-colors hover:border-slate-600 hover:text-white sm:right-5 sm:top-5"
                   aria-label="Close modal"
                 >
                   <X className="h-4 w-4" />
                 </button>
 
                 {/* Icon + Title + Subtitle */}
-                <div className="flex items-start gap-4 pr-10">
+                <div className="flex items-start gap-3 pr-12 sm:gap-4 sm:pr-10">
                   <div
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${project.iconColor ?? "from-emerald-500 to-teal-400"} shadow-lg`}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${project.iconColor ?? "from-emerald-500 to-teal-400"} shadow-lg sm:h-14 sm:w-14`}
                   >
-                    <div className="h-6 w-6 rounded-lg bg-white/30 ring-2 ring-white/40" />
+                    <div className="h-5 w-5 rounded-lg bg-white/30 ring-2 ring-white/40 sm:h-6 sm:w-6" />
                   </div>
                   <div className="min-w-0 pt-1">
-                    <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                    <h2 className="font-display text-xl font-bold text-white sm:text-2xl lg:text-3xl">
                       {project.title}
                     </h2>
                     {project.subtitle ? (
@@ -114,7 +114,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Divider */}
-                <div className="my-6 h-px w-full bg-slate-800" />
+                <div className="my-5 h-px w-full bg-slate-800 sm:my-6" />
 
                 {/* Overview */}
                 <div>
@@ -125,9 +125,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Preview */}
-                <div className="mt-7">
+                <div className="mt-6 sm:mt-7">
                   <h3 className="mb-4 font-display text-base font-bold text-white">Preview</h3>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <BrowserMockup iconColor={project.iconColor} label={project.title} />
                     <BrowserMockup iconColor={project.iconColor} label="Dashboard" />
                   </div>
@@ -141,7 +141,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Key Features + Architecture Highlights */}
-                <div className="mt-7 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div className="mt-6 grid grid-cols-1 gap-6 sm:mt-7 sm:grid-cols-2">
                   <div>
                     <h3 className="font-display text-base font-bold text-white">Key Features</h3>
                     <ul className="mt-3 space-y-2.5">
@@ -178,7 +178,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="mt-7">
+                <div className="mt-6 sm:mt-7">
                   <h3 className="mb-3 font-display text-base font-bold text-white">Tech Stack</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
@@ -194,9 +194,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Divider */}
-                <div className="my-6 h-px w-full bg-slate-800" />
+                <div className="my-5 h-px w-full bg-slate-800 sm:my-6" />
 
-                {/* View on GitHub */}
+                {/* View on GitHub – full-width on mobile */}
                 <motion.a
                   href={project.githubUrl}
                   target="_blank"
@@ -204,7 +204,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ duration: 0.16, ease: "easeOut" }}
-                  className="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-[#14F195] to-[#38BDF8] px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_8px_20px_rgba(20,241,149,0.25)] transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(56,189,248,0.35)]"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#14F195] to-[#38BDF8] px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_8px_20px_rgba(20,241,149,0.25)] transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(56,189,248,0.35)] sm:w-auto sm:inline-flex"
                 >
                   <Github className="h-4 w-4" aria-hidden="true" />
                   View on GitHub

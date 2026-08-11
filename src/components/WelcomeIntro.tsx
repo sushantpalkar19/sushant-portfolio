@@ -73,7 +73,7 @@ export default function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
             aria-hidden="true"
           >
             <motion.div
-              className="h-[420px] w-[420px] rounded-full"
+              className="h-[260px] w-[260px] rounded-full sm:h-[420px] sm:w-[420px]"
               style={{
                 background:
                   "radial-gradient(ellipse at center, rgba(20,241,149,0.10) 0%, rgba(20,241,149,0.04) 40%, transparent 72%)",
@@ -96,7 +96,7 @@ export default function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
             aria-hidden="true"
           >
             <motion.div
-              className="h-[200px] w-[600px] rounded-full"
+              className="h-[160px] w-[90vw] rounded-full sm:h-[200px] sm:w-[600px]"
               style={{
                 background:
                   "radial-gradient(ellipse at center, rgba(56,189,248,0.06) 0%, transparent 70%)",
@@ -139,9 +139,9 @@ export default function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
                 LETTERS.map((letter, i) => (
                   <motion.span
                     key={i}
-                    className="inline-block font-display text-4xl font-bold uppercase text-[#14F195] antialiased sm:text-5xl md:text-6xl"
+                    className="inline-block font-display text-[2.25rem] font-bold uppercase text-[#14F195] antialiased sm:text-5xl md:text-6xl"
                     style={{
-                      letterSpacing: "0.18em",
+                      letterSpacing: "0.12em",
                       textShadow: "0 0 28px rgba(20,241,149,0.28)",
                       willChange: "transform, opacity",
                     }}
@@ -172,7 +172,7 @@ export default function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
 
             {/* --- Accent underline sweep --- */}
             <div
-              className="relative h-px w-full max-w-[18rem] overflow-hidden sm:max-w-xs md:max-w-sm"
+              className="relative h-px w-full max-w-[14rem] overflow-hidden sm:max-w-xs md:max-w-sm"
               aria-hidden="true"
             >
               {/* Track line */}

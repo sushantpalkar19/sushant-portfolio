@@ -296,7 +296,7 @@ export default function HeroSection() {
     >
       <div className="container relative z-10">
         <motion.div
-          className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-6xl items-center gap-10 py-8 md:py-10 lg:h-[calc(100svh-5rem)] lg:grid-cols-[minmax(0,1fr)_minmax(430px,460px)] lg:gap-16 lg:py-0"
+          className="mx-auto grid max-w-6xl items-center gap-8 py-10 sm:gap-10 sm:py-12 md:py-10 lg:h-[calc(100svh-5rem)] lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[minmax(0,1fr)_minmax(430px,460px)] lg:gap-16 lg:py-0"
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
           variants={heroContainer}
@@ -310,7 +310,7 @@ export default function HeroSection() {
             </motion.span>
 
             <motion.h1
-              className="mt-5 flex flex-wrap gap-x-5 font-display text-5xl font-bold leading-none text-foreground sm:text-6xl lg:text-7xl"
+              className="mt-5 flex flex-wrap gap-x-4 font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl sm:gap-x-5 sm:leading-none lg:text-7xl"
               variants={shouldReduceMotion ? undefined : headingContainer}
             >
               {nameWords.map((word, index) => (
@@ -332,7 +332,7 @@ export default function HeroSection() {
             />
 
             <motion.p
-              className="mt-7 max-w-full break-words text-xl font-semibold text-muted sm:text-2xl"
+              className="mt-7 max-w-full break-words text-lg font-semibold text-muted sm:text-xl"
               variants={shouldReduceMotion ? undefined : roleReveal}
             >
               <AnimatedRoles />
@@ -405,7 +405,7 @@ export default function HeroSection() {
 
           <motion.div
             variants={shouldReduceMotion ? undefined : developerCardReveal}
-            className="relative mx-auto flex w-full min-w-0 justify-center lg:mx-0 lg:justify-self-end"
+            className="relative mx-auto hidden w-full min-w-0 justify-center lg:flex lg:mx-0 lg:justify-self-end"
           >
             <motion.div
               className="absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.15),rgba(34,211,238,0.11)_44%,transparent_72%)] blur-3xl"

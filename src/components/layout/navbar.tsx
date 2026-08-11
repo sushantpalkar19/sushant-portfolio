@@ -71,7 +71,7 @@ export function Navbar() {
               })}
             </nav>
 
-            <div className="hidden items-center gap-4 sm:flex">
+            <div className="hidden items-center gap-4 lg:flex">
               <div className="h-9 w-px bg-border" aria-hidden="true" />
               <ThemeToggle />
               <motion.a

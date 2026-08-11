@@ -36,6 +36,12 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    /* Prevent horizontal overflow on all viewports */
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   body {

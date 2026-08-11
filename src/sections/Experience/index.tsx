@@ -24,7 +24,10 @@ export default function ExperienceSection() {
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
         >
-          <Card className="p-6 sm:p-8">
+          <Card
+            className="p-6 sm:p-8 shadow-[0_6px_14px_rgb(15_23_42/0.045)] sm:shadow-card"
+            whileHover={{ y: -2, boxShadow: "0 10px 28px rgb(15 23 42 / 0.09)" }}
+          >
             <div className="mb-8 flex items-center justify-between gap-4">
               <div className="inline-flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">
                 <BriefcaseBusiness className="h-4 w-4" />
