@@ -79,7 +79,13 @@ export default function ProjectsSection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.16, ease: "easeOut" }}
-                className="inline-flex items-center gap-2.5 rounded-xl border border-slate-700 bg-[#090f1e]/90 px-5 py-3 text-sm font-semibold text-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.3)] backdrop-blur transition-all duration-200 hover:border-[#14F195]/60 hover:text-white hover:shadow-[0_8px_24px_rgba(20,241,149,0.15)]"
+                className={[
+                  "inline-flex items-center gap-2.5 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200",
+                  // Light mode
+                  "border border-slate-200 bg-white text-slate-800 shadow-[0_4px_16px_rgba(15,23,42,0.06)] hover:border-slate-300 hover:text-slate-950 hover:shadow-[0_8px_24px_rgba(15,23,42,0.1)]",
+                  // Dark mode (original)
+                  "dark:border-slate-700 dark:bg-[#090f1e]/90 dark:text-slate-200 dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] dark:backdrop-blur dark:hover:border-[#14F195]/60 dark:hover:text-white dark:hover:shadow-[0_8px_24px_rgba(20,241,149,0.15)]",
+                ].join(" ")}
               >
                 <LayoutGrid className="h-4 w-4 text-[#14F195]" aria-hidden="true" />
                 Wanna See More Projects?

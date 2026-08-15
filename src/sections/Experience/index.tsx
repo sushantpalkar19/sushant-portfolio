@@ -25,8 +25,8 @@ export default function ExperienceSection() {
           variants={staggerContainer}
         >
           <Card
-            className="p-6 sm:p-8 shadow-[0_6px_14px_rgb(15_23_42/0.045)] sm:shadow-card"
-            whileHover={{ y: -2, boxShadow: "0 10px 28px rgb(15 23 42 / 0.09)" }}
+            className="p-6 sm:p-8 shadow-[0_4px_20px_rgba(15,23,42,0.07)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_12px_28px_rgba(0,0,0,0.6)]"
+            whileHover={{ y: -2 }}
           >
             <div className="mb-8 flex items-center justify-between gap-4">
               <div className="inline-flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">
@@ -40,9 +40,8 @@ export default function ExperienceSection() {
               {experiences.map((experience, index) => (
                 <motion.article key={experience.company} className="relative" variants={fadeUp}>
                   <span
-                    className={`absolute -left-6 top-1.5 h-3 w-3 rounded-full shadow-[0_0_14px_rgb(16_185_129_/_0.65)] ${
-                      index === 0 ? "bg-primary" : "bg-secondary"
-                    }`}
+                    className={`absolute -left-6 top-1.5 h-3 w-3 rounded-full shadow-[0_0_14px_rgb(16_185_129_/_0.65)] ${index === 0 ? "bg-primary" : "bg-secondary"
+                      }`}
                     aria-hidden="true"
                   />
 

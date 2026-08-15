@@ -76,47 +76,55 @@ export default function EducationSection() {
                   variants={cardVariants}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="group relative overflow-hidden rounded-[20px] border border-slate-800/80 bg-[#090f1e]/90 p-6 shadow-[0_15px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] sm:p-7"
+                  className={[
+                    "group relative overflow-hidden rounded-[20px] p-6 sm:p-7 transition-all duration-300",
+                    // Light mode
+                    "bg-white border border-slate-200",
+                    "shadow-[0_4px_20px_rgba(15,23,42,0.07),0_1px_4px_rgba(15,23,42,0.04)]",
+                    "hover:border-slate-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.11),0_2px_8px_rgba(15,23,42,0.06)]",
+                    // Dark mode
+                    "dark:bg-[#090f1e]/90 dark:border-slate-800/80 dark:backdrop-blur-xl",
+                    "dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]",
+                    "dark:hover:border-slate-700 dark:hover:shadow-[0_14px_30px_rgba(0,0,0,0.6)]",
+                  ].join(" ")}
                 >
-                  {/* Subtle radial dark overlay pattern in top right */}
+                  {/* Subtle radial dark overlay pattern in top right - hidden in light mode */}
                   <div
-                    className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br from-cyan-500/10 via-slate-800/20 to-transparent blur-xl"
+                    className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent blur-xl opacity-0 dark:opacity-20"
                     aria-hidden="true"
                   />
 
                   <div className="relative z-10 flex flex-col justify-between h-full">
                     <div>
                       {/* Institution Name */}
-                      <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
+                      <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
                         {title}
                       </h3>
 
                       {/* Degree / Program */}
                       <p
-                        className={`mt-1.5 text-sm font-semibold ${
-                          isBTech ? "text-[#14F195]" : "text-[#38BDF8]"
-                        }`}
+                        className={`mt-1.5 text-sm font-semibold ${isBTech ? "text-emerald-600 dark:text-[#14F195]" : "text-sky-600 dark:text-[#38BDF8]"
+                          }`}
                       >
                         {programLabel}
                       </p>
                     </div>
 
                     {/* Divider Line */}
-                    <div className="my-5 h-px w-full bg-slate-800/80" />
+                    <div className="my-5 h-px w-full bg-slate-200 dark:bg-slate-800/80" />
 
                     {/* Bottom Row: Year on Left, Score Badge on Right */}
                     <div className="flex items-center justify-between pt-1">
-                      <span className="font-mono text-xs font-medium text-slate-400">
+                      <span className="font-mono text-xs font-medium text-slate-500 dark:text-slate-400">
                         {item.period}
                       </span>
 
                       {item.scoreValue ? (
                         <span
-                          className={`font-mono text-xs font-semibold rounded-md border px-2.5 py-1 ${
-                            isBTech
-                              ? "border-[#14F195]/40 text-[#14F195] bg-[#14F195]/5"
-                              : "border-[#38BDF8]/40 text-[#38BDF8] bg-[#38BDF8]/5"
-                          }`}
+                          className={`font-mono text-xs font-semibold rounded-md border px-2.5 py-1 ${isBTech
+                              ? "border-emerald-300 bg-emerald-50 text-emerald-700 dark:border-[#14F195]/40 dark:text-[#14F195] dark:bg-[#14F195]/5"
+                              : "border-sky-300 bg-sky-50 text-sky-700 dark:border-[#38BDF8]/40 dark:text-[#38BDF8] dark:bg-[#38BDF8]/5"
+                            }`}
                         >
                           {scoreText}
                         </span>

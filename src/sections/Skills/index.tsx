@@ -129,7 +129,17 @@ export default function SkillsSection() {
               variants={fadeUpSmooth}
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-[20px] border border-slate-800/80 bg-[#090f1e]/90 p-6 shadow-[0_15px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:shadow-[0_20px_50px_rgba(8,145,178,0.12)] sm:p-7"
+              className={[
+                "group relative overflow-hidden rounded-[20px] p-6 sm:p-7 transition-all duration-300",
+                // ── Light mode ──────────────────────────────────────────────
+                "bg-white border border-slate-200",
+                "shadow-[0_4px_20px_rgba(15,23,42,0.07),0_1px_4px_rgba(15,23,42,0.04)]",
+                "hover:border-slate-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.11),0_2px_8px_rgba(15,23,42,0.06)]",
+                // ── Dark mode (subtle dark shadow) ─────────────────────────
+                "dark:bg-[#090f1e]/90 dark:border-slate-800/80 dark:backdrop-blur-xl",
+                "dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]",
+                "dark:hover:border-slate-700 dark:hover:shadow-[0_14px_30px_rgba(0,0,0,0.6)]",
+              ].join(" ")}
             >
               {/* Category Header */}
               <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[#14F195]">
@@ -145,7 +155,15 @@ export default function SkillsSection() {
                   return (
                     <div
                       key={skill.name}
-                      className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-[#060b17] px-3 py-1.5 text-xs font-mono font-semibold text-slate-200 transition-all duration-200 hover:border-cyan-500/40 hover:bg-[#080d1a] hover:text-white hover:shadow-[0_0_12px_rgba(56,189,248,0.15)]"
+                      className={[
+                        "inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-mono font-semibold transition-all duration-200",
+                        // Light mode pill
+                        "border border-slate-200 bg-slate-50 text-slate-700",
+                        "hover:border-slate-300 hover:bg-white hover:text-slate-900",
+                        // Dark mode pill
+                        "dark:border-slate-800 dark:bg-[#060b17] dark:text-slate-200",
+                        "dark:hover:border-cyan-500/40 dark:hover:bg-[#080d1a] dark:hover:text-white dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]",
+                      ].join(" ")}
                     >
                       {Icon ? (
                         <Icon className={`h-3.5 w-3.5 ${iconColorClass} shrink-0`} aria-hidden="true" />

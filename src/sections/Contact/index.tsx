@@ -147,7 +147,7 @@ export default function ContactSection() {
               <div className="mt-2 h-[2px] w-12 bg-gradient-to-r from-[#14F195] to-[#38BDF8] rounded-full" />
             </div>
 
-            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">
               Open to full-time roles, freelance projects, and collaborations. Whether you have a
               question or just want to say hi, I&apos;ll try my best to get back to you!
             </p>
@@ -155,21 +155,29 @@ export default function ContactSection() {
 
           {/* Centered Glassmorphism Container Card */}
           <div
-            className="relative rounded-[24px] border border-slate-800/80 bg-[#090f1e]/90 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-10 lg:p-12"
+            className={[
+              "relative rounded-[24px] p-6 sm:p-10 lg:p-12 transition-all duration-300",
+              // Light mode
+              "bg-white border border-slate-200",
+              "shadow-[0_4px_25px_rgba(15,23,42,0.08),0_1px_4px_rgba(15,23,42,0.04)]",
+              // Dark mode
+              "dark:bg-[#090f1e]/90 dark:border-slate-800/80 dark:backdrop-blur-xl",
+              "dark:shadow-[0_12px_32px_rgba(0,0,0,0.5)]",
+            ].join(" ")}
           >
             {/* Two-Column Layout with Vertical Divider on Desktop */}
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-10">
               {/* LEFT PANEL */}
               <motion.div
                 variants={leftPanelVariants}
-                className="flex flex-col justify-between lg:col-span-5 lg:pr-8 lg:border-r lg:border-slate-800/80"
+                className="flex flex-col justify-between lg:col-span-5 lg:pr-8 lg:border-r lg:border-slate-200 dark:lg:border-slate-800/80"
               >
                 <div>
-                  <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                  <h3 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
                     Get in Touch
                   </h3>
 
-                  <p className="mt-3 text-xs leading-relaxed text-slate-400 sm:text-sm">
+                  <p className="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-400 sm:text-sm">
                     Based in Maharashtra, India — open to remote &amp; on-site roles.
                   </p>
 
@@ -188,25 +196,25 @@ export default function ContactSection() {
                 </div>
 
                 {/* Contact List */}
-                <div className="mt-8 space-y-3 pt-6 border-t border-slate-800/60 lg:border-t-0 lg:pt-0">
+                <div className="mt-8 space-y-3 pt-6 border-t border-slate-200 dark:border-slate-800/60 lg:border-t-0 lg:pt-0">
                   <a
                     href="tel:+917499092205"
-                    className="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-[#38BDF8] transition-colors duration-150"
+                    className="flex items-center gap-3 text-xs font-mono text-slate-700 hover:text-[#0284c7] dark:text-slate-300 dark:hover:text-[#38BDF8] transition-colors duration-150"
                   >
-                    <Phone className="h-4 w-4 text-slate-400 shrink-0" />
+                    <Phone className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
                     <span>+91 7499092205</span>
                   </a>
 
                   <a
                     href="mailto:sushantpalkar92@gmail.com"
-                    className="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-[#38BDF8] transition-colors duration-150"
+                    className="flex items-center gap-3 text-xs font-mono text-slate-700 hover:text-[#0284c7] dark:text-slate-300 dark:hover:text-[#38BDF8] transition-colors duration-150"
                   >
-                    <Mail className="h-4 w-4 text-slate-400 shrink-0" />
+                    <Mail className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
                     <span className="truncate">sushantpalkar92@gmail.com</span>
                   </a>
 
-                  <div className="flex items-center gap-3 text-xs font-mono text-slate-300">
-                    <MapPin className="h-4 w-4 text-slate-400 shrink-0" />
+                  <div className="flex items-center gap-3 text-xs font-mono text-slate-700 dark:text-slate-300">
+                    <MapPin className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
                     <span>Maharashtra, India</span>
                   </div>
 
@@ -214,9 +222,9 @@ export default function ContactSection() {
                     href="https://linkedin.com/in/sushant-palkar"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-[#38BDF8] transition-colors duration-150"
+                    className="flex items-center gap-3 text-xs font-mono text-slate-700 hover:text-[#0284c7] dark:text-slate-300 dark:hover:text-[#38BDF8] transition-colors duration-150"
                   >
-                    <Linkedin className="h-4 w-4 text-slate-400 shrink-0" />
+                    <Linkedin className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
                     <span>LinkedIn</span>
                   </a>
 
@@ -224,9 +232,9 @@ export default function ContactSection() {
                     href="https://github.com/sushantpalkar19"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-[#38BDF8] transition-colors duration-150"
+                    className="flex items-center gap-3 text-xs font-mono text-slate-700 hover:text-[#0284c7] dark:text-slate-300 dark:hover:text-[#38BDF8] transition-colors duration-150"
                   >
-                    <Github className="h-4 w-4 text-slate-400 shrink-0" />
+                    <Github className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
                     <span>GitHub</span>
                   </a>
                 </div>
@@ -244,7 +252,7 @@ export default function ContactSection() {
                       type="text"
                       placeholder="Your Name"
                       {...register("name")}
-                      className="h-12 w-full rounded-xl border border-slate-800 bg-[#060b17]/90 px-4 text-sm text-slate-200 placeholder:text-slate-500 transition-all duration-200 hover:border-slate-700 focus:border-[#38BDF8] focus:bg-[#060b17] focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                      className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-300 focus:border-[#38BDF8] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_12px_rgba(56,189,248,0.15)] dark:border-slate-800 dark:bg-[#060b17]/90 dark:text-slate-200 dark:placeholder:text-slate-500 dark:hover:border-slate-700 dark:focus:border-[#38BDF8] dark:focus:bg-[#060b17] dark:focus:ring-1 dark:focus:ring-[#38BDF8]/40 dark:focus:shadow-[0_0_8px_rgba(56,189,248,0.1)]"
                     />
                     {errors.name ? (
                       <p className="mt-1 text-xs text-rose-400">{errors.name.message}</p>
@@ -257,7 +265,7 @@ export default function ContactSection() {
                       type="email"
                       placeholder="Your Email"
                       {...register("email")}
-                      className="h-12 w-full rounded-xl border border-slate-800 bg-[#060b17]/90 px-4 text-sm text-slate-200 placeholder:text-slate-500 transition-all duration-200 hover:border-slate-700 focus:border-[#38BDF8] focus:bg-[#060b17] focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                      className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-300 focus:border-[#38BDF8] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_12px_rgba(56,189,248,0.15)] dark:border-slate-800 dark:bg-[#060b17]/90 dark:text-slate-200 dark:placeholder:text-slate-500 dark:hover:border-slate-700 dark:focus:border-[#38BDF8] dark:focus:bg-[#060b17] dark:focus:ring-1 dark:focus:ring-[#38BDF8]/40 dark:focus:shadow-[0_0_8px_rgba(56,189,248,0.1)]"
                     />
                     {errors.email ? (
                       <p className="mt-1 text-xs text-rose-400">{errors.email.message}</p>
@@ -270,7 +278,7 @@ export default function ContactSection() {
                       type="text"
                       placeholder="Subject"
                       {...register("subject")}
-                      className="h-12 w-full rounded-xl border border-slate-800 bg-[#060b17]/90 px-4 text-sm text-slate-200 placeholder:text-slate-500 transition-all duration-200 hover:border-slate-700 focus:border-[#38BDF8] focus:bg-[#060b17] focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                      className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-300 focus:border-[#38BDF8] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_12px_rgba(56,189,248,0.15)] dark:border-slate-800 dark:bg-[#060b17]/90 dark:text-slate-200 dark:placeholder:text-slate-500 dark:hover:border-slate-700 dark:focus:border-[#38BDF8] dark:focus:bg-[#060b17] dark:focus:ring-1 dark:focus:ring-[#38BDF8]/40 dark:focus:shadow-[0_0_8px_rgba(56,189,248,0.1)]"
                     />
                     {errors.subject ? (
                       <p className="mt-1 text-xs text-rose-400">{errors.subject.message}</p>
@@ -283,7 +291,7 @@ export default function ContactSection() {
                       rows={5}
                       placeholder="Your Message"
                       {...register("message")}
-                      className="w-full rounded-xl border border-slate-800 bg-[#060b17]/90 p-4 text-sm text-slate-200 placeholder:text-slate-500 transition-all duration-200 hover:border-slate-700 focus:border-[#38BDF8] focus:bg-[#060b17] focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-300 focus:border-[#38BDF8] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#38BDF8]/40 focus:shadow-[0_0_12px_rgba(56,189,248,0.15)] dark:border-slate-800 dark:bg-[#060b17]/90 dark:text-slate-200 dark:placeholder:text-slate-500 dark:hover:border-slate-700 dark:focus:border-[#38BDF8] dark:focus:bg-[#060b17] dark:focus:ring-1 dark:focus:ring-[#38BDF8]/40 dark:focus:shadow-[0_0_8px_rgba(56,189,248,0.1)]"
                     />
                     {errors.message ? (
                       <p className="mt-1 text-xs text-rose-400">{errors.message.message}</p>

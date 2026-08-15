@@ -61,11 +61,22 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
       whileHover={{ y: -6, scale: 1.015 }}
       transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
       onClick={() => onViewDetails(project)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-800/80 bg-[#091121]/95 p-6 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 hover:border-[#14F195]/40 hover:shadow-[0_22px_55px_rgba(20,241,149,0.14)] cursor-pointer"
+      className={[
+        "group relative flex h-full flex-col overflow-hidden rounded-[24px] p-6 cursor-pointer",
+        "transition-all duration-300",
+        // ── Light mode ──────────────────────────────────────────────────────
+        "bg-white border border-slate-200",
+        "shadow-[0_4px_20px_rgba(15,23,42,0.07),0_1px_4px_rgba(15,23,42,0.05)]",
+        "hover:border-slate-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.12),0_2px_8px_rgba(15,23,42,0.07)]",
+        // ── Dark mode (preserves original layout, subtle dark shadow) ───────
+        "dark:bg-[#091121]/95 dark:border-slate-800/80 dark:backdrop-blur-xl",
+        "dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]",
+        "dark:hover:border-slate-700 dark:hover:shadow-[0_14px_30px_rgba(0,0,0,0.6)]",
+      ].join(" ")}
     >
-      {/* Dark radial glow arc top-right */}
+      {/* Radial glow arc top-right — hidden in light mode, subtle in dark */}
       <div
-        className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br from-cyan-500/10 via-emerald-500/5 to-transparent blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br from-cyan-500/10 via-emerald-500/5 to-transparent blur-2xl transition-opacity duration-300 opacity-0 dark:opacity-20 dark:group-hover:opacity-40"
         aria-hidden="true"
       />
 
@@ -73,14 +84,14 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
       <div className="relative z-10 flex items-start justify-between">
         <ProjectIcon id={project.id} color={project.iconColor} />
         {project.underDevelopment ? (
-          <span className="inline-flex items-center rounded-full border border-amber-500/50 bg-amber-500/10 px-3 py-1 font-mono text-[11px] font-medium text-amber-400">
+          <span className="inline-flex items-center rounded-full border border-amber-500/50 bg-amber-500/10 px-3 py-1 font-mono text-[11px] font-medium text-amber-400 dark:text-amber-400">
             Under Development
           </span>
         ) : null}
       </div>
 
       {/* Title */}
-      <h3 className="relative z-10 mt-5 font-display text-2xl font-bold text-white tracking-tight">
+      <h3 className="relative z-10 mt-5 font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
         {project.title}
       </h3>
 
@@ -92,7 +103,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
       ) : null}
 
       {/* Description – 2-line truncated */}
-      <p className="relative z-10 mt-3 line-clamp-2 text-sm leading-relaxed text-slate-400">
+      <p className="relative z-10 mt-3 line-clamp-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
         {project.description}
       </p>
 
@@ -104,14 +115,20 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
         {visibleStack.map((tech) => (
           <span
             key={tech}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-800/90 bg-[#050a14] px-2.5 py-1 font-mono text-[11px] font-medium text-slate-300 transition-colors duration-150 group-hover:border-slate-700"
+            className={[
+              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-colors duration-150",
+              // Light mode pill
+              "border border-slate-200 bg-slate-50 text-slate-700 group-hover:border-slate-300",
+              // Dark mode pill (original)
+              "dark:border-slate-800/90 dark:bg-[#050a14] dark:text-slate-300 dark:group-hover:border-slate-700",
+            ].join(" ")}
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#14F195]" aria-hidden="true" />
             {tech}
           </span>
         ))}
         {overflowCount > 0 && (
-          <span className="font-mono text-xs font-semibold text-slate-500 pl-1">
+          <span className="font-mono text-xs font-semibold pl-1 text-slate-400 dark:text-slate-500">
             +{overflowCount}
           </span>
         )}
@@ -119,7 +136,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 
       {/* "View Details →" link */}
       <div className="relative z-10 mt-5 flex items-center pt-1">
-        <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#14F195] transition-colors duration-200 group-hover:text-white">
+        <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#14F195] transition-colors duration-200 group-hover:text-emerald-700 dark:group-hover:text-white">
           View Details
           <motion.span
             className="inline-flex items-center"
