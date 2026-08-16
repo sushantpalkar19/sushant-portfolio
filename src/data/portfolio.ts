@@ -178,6 +178,12 @@ export const projects: ProjectItem[] = [
     description:
       "Developed a healthcare management platform with dashboards, REST APIs, and secure role-based authentication for monitoring ICU operations.",
     image: "/images/project-icu-monitoring.svg",
+    previewImages: [
+      "/projects/icu-monitoring/icu-login.webp",
+      "/projects/icu-monitoring/icu-dashboard.webp",
+      "/projects/icu-monitoring/icu-patient-monitoring.webp",
+      "/projects/icu-monitoring/icu-analytics.webp",
+    ],
     stack: ["Angular", "Spring Boot", "MariaDB"],
     highlights: [
       "Dashboard-oriented ICU monitoring workflows",
@@ -201,6 +207,12 @@ export const projects: ProjectItem[] = [
     description:
       "Developed an online examination platform featuring AI-based proctoring, secure authentication, and role-based access.",
     image: "/images/project-ai-proctoring.svg",
+    previewImages: [
+      "/projects/exam-management/exam-login.webp",
+      "/projects/exam-management/exam-dashboard.webp",
+      "/projects/exam-management/exam-question-management.webp",
+      "/projects/exam-management/exam-results.webp",
+    ],
     stack: ["React.js", "Node.js", "Express.js", "MongoDB"],
     highlights: [
       "AI-assisted proctoring workflow for online assessments",
@@ -224,6 +236,12 @@ export const projects: ProjectItem[] = [
     description:
       "Developed an academic management platform enabling communication between students and teachers, attendance management, announcements, and progress tracking.",
     image: "/images/project-elearning-system.svg",
+    previewImages: [
+      "/projects/school-learning/school-login.webp",
+      "/projects/school-learning/school-dashboard.webp",
+      "/projects/school-learning/school-course.webp",
+      "/projects/school-learning/school-performance.webp",
+    ],
     stack: ["Angular", "Spring Boot", "MariaDB"],
     highlights: [
       "Communication flow between students and teachers",

@@ -49,6 +49,7 @@ export type ProjectItem = {
   category: ProjectCategory;
   description: string;
   image?: string;
+  previewImages?: string[];
   stack: string[];
   highlights: string[];
   archHighlights?: string[];

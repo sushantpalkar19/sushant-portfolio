@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { CheckCircle2, Circle, Github, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Github, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { ProjectItem } from "@/types";
 
@@ -7,6 +7,44 @@ type ProjectModalProps = {
   project: ProjectItem | null;
   onClose: () => void;
 };
+
+function getMockupUrl(imagePath: string, index: number): string {
+  if (imagePath.includes("icu-login")) return "https://icu-monitoring.hospital.org/login";
+  if (imagePath.includes("icu-dashboard")) return "https://icu-monitoring.hospital.org/dashboard";
+  if (imagePath.includes("icu-patient-monitoring")) return "https://icu-monitoring.hospital.org/patient/bed-02";
+  if (imagePath.includes("icu-analytics")) return "https://icu-monitoring.hospital.org/analytics/bed-02";
+
+  if (imagePath.includes("exam-login")) return "https://exampro-ai.edu/login";
+  if (imagePath.includes("exam-dashboard")) return "https://exampro-ai.edu/admin/dashboard";
+  if (imagePath.includes("exam-question-management")) return "https://exampro-ai.edu/admin/questions";
+  if (imagePath.includes("exam-results")) return "https://exampro-ai.edu/admin/analytics";
+
+  if (imagePath.includes("school-login")) return "https://edulearn.school.edu/login";
+  if (imagePath.includes("school-dashboard")) return "https://edulearn.school.edu/student/dashboard";
+  if (imagePath.includes("school-course")) return "https://edulearn.school.edu/courses/cs-402";
+  if (imagePath.includes("school-performance")) return "https://edulearn.school.edu/student/transcript";
+
+  return `https://app.internal/preview-${index + 1}`;
+}
+
+function getMockupCaption(imagePath: string, index: number): string {
+  if (imagePath.includes("icu-login")) return "1. ICU Login & Authentication";
+  if (imagePath.includes("icu-dashboard")) return "2. ICU Central Command Dashboard";
+  if (imagePath.includes("icu-patient-monitoring")) return "3. Real-Time Patient Vitals Monitoring";
+  if (imagePath.includes("icu-analytics")) return "4. 24h Patient Telemetry & ABG Analytics";
+
+  if (imagePath.includes("exam-login")) return "1. Student & Examiner Login Portal";
+  if (imagePath.includes("exam-dashboard")) return "2. Live Examination Roster & Proctoring";
+  if (imagePath.includes("exam-question-management")) return "3. Question Bank & Marking Scheme";
+  if (imagePath.includes("exam-results")) return "4. Cohort Results & AI Integrity Analytics";
+
+  if (imagePath.includes("school-login")) return "1. Academic Portal Authentication";
+  if (imagePath.includes("school-dashboard")) return "2. Student Dashboard & Attendance";
+  if (imagePath.includes("school-course")) return "3. Interactive Course & Video Lecture";
+  if (imagePath.includes("school-performance")) return "4. Student Academic Grade Report";
+
+  return `Preview ${index + 1}`;
+}
 
 function BrowserMockup({ iconColor, label }: { iconColor?: string; label: string }) {
   const gradient = iconColor ?? "from-emerald-500 to-teal-400";
@@ -31,6 +69,12 @@ function BrowserMockup({ iconColor, label }: { iconColor?: string; label: string
 }
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [project]);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -126,18 +170,117 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
                 {/* Preview */}
                 <div className="mt-6 sm:mt-7">
-                  <h3 className="mb-4 font-display text-base font-bold text-white">Preview</h3>
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <BrowserMockup iconColor={project.iconColor} label={project.title} />
-                    <BrowserMockup iconColor={project.iconColor} label="Dashboard" />
+                  <div className="mb-4 flex items-center justify-between">
+                    <h3 className="font-display text-base font-bold text-white">Preview</h3>
+                    {project.previewImages && project.previewImages.length > 0 ? (
+                      <span className="font-mono text-xs text-slate-400">
+                        {activeImageIndex + 1} of {project.previewImages.length}
+                      </span>
+                    ) : null}
                   </div>
-                  {/* Carousel dot indicators */}
-                  <div className="mt-3 flex justify-center gap-1.5">
-                    <span className="h-1.5 w-5 rounded-full bg-[#14F195]" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
-                  </div>
+
+                  {project.previewImages && project.previewImages.length > 0 ? (
+                    <div className="relative overflow-hidden rounded-xl border border-slate-800 bg-[#060b17] shadow-xl">
+                      {/* Top Window Bar */}
+                      <div className="flex h-8 items-center justify-between border-b border-slate-800 bg-[#080d1a] px-3">
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                        </div>
+                        <div className="mx-3 flex h-5 flex-1 items-center justify-center rounded-md bg-slate-900/80 px-2 font-mono text-[11px] text-slate-400">
+                          {getMockupUrl(project.previewImages[activeImageIndex], activeImageIndex)}
+                        </div>
+                      </div>
+
+                      {/* Active Preview Image Container */}
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={activeImageIndex}
+                            src={project.previewImages[activeImageIndex]}
+                            alt={`${project.title} Preview ${activeImageIndex + 1}`}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.2 }}
+                            className="h-full w-full object-cover"
+                          />
+                        </AnimatePresence>
+
+                        {/* Navigation Arrows */}
+                        {project.previewImages.length > 1 ? (
+                          <>
+                            <button
+                              onClick={() =>
+                                setActiveImageIndex((prev) =>
+                                  prev === 0 ? project.previewImages!.length - 1 : prev - 1
+                                )
+                              }
+                              className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full border border-slate-700/80 bg-slate-950/70 text-slate-300 backdrop-blur-sm transition-all hover:border-slate-500 hover:bg-slate-900 hover:text-white"
+                              aria-label="Previous preview image"
+                            >
+                              <ChevronLeft className="h-5 w-5" />
+                            </button>
+                            <button
+                              onClick={() =>
+                                setActiveImageIndex((prev) =>
+                                  prev === project.previewImages!.length - 1 ? 0 : prev + 1
+                                )
+                              }
+                              className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full border border-slate-700/80 bg-slate-950/70 text-slate-300 backdrop-blur-sm transition-all hover:border-slate-500 hover:bg-slate-900 hover:text-white"
+                              aria-label="Next preview image"
+                            >
+                              <ChevronRight className="h-5 w-5" />
+                            </button>
+                          </>
+                        ) : null}
+                      </div>
+
+                      {/* Active Image Indicator Label Bar */}
+                      <div className="flex h-7 items-center justify-between border-t border-slate-800 bg-[#080d1a] px-3 font-mono text-[11px] text-slate-400">
+                        <span className="truncate">
+                          {getMockupCaption(
+                            project.previewImages[activeImageIndex],
+                            activeImageIndex
+                          )}
+                        </span>
+                        <span className="shrink-0 font-semibold text-emerald-400">
+                          Production Live View
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <BrowserMockup iconColor={project.iconColor} label={project.title} />
+                      <BrowserMockup iconColor={project.iconColor} label="Dashboard" />
+                    </div>
+                  )}
+
+                  {/* Carousel Dot Indicators */}
+                  {project.previewImages && project.previewImages.length > 0 ? (
+                    <div className="mt-3 flex justify-center gap-1.5">
+                      {project.previewImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveImageIndex(idx)}
+                          className={`h-1.5 transition-all duration-300 ${
+                            idx === activeImageIndex
+                              ? "w-5 rounded-full bg-[#14F195]"
+                              : "w-1.5 rounded-full bg-slate-700 hover:bg-slate-500"
+                          }`}
+                          aria-label={`Go to preview slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="mt-3 flex justify-center gap-1.5">
+                      <span className="h-1.5 w-5 rounded-full bg-[#14F195]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Key Features + Architecture Highlights */}
